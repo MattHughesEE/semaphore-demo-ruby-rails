@@ -13,11 +13,11 @@ blocks:
         - name: AWS_CREDENTIALS
       env_vars:
         - name: S3_BUCKET_NAME
-          value: bucket-name
+          value: elasticbeanstalk-us-east-1-673626449192
         - name: EB_APP_NAME
-          value: app-name
+          value: rtassignment
         - name: EB_ENV_NAME
-          value: env-name
+          value: Rtassignment-env
 
       jobs:
         - name: "Deployment"
