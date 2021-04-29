@@ -5,6 +5,13 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
+  - name: Database Migration
+    dependencies: []
+    task:
+      jobs:
+        - name: DB Migration job 
+          commands :
+            - echo "Inside DB Migration Job"
   - name: Setup
     dependencies: []
     task:
