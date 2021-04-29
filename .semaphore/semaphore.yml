@@ -1,80 +1,21 @@
 version: v1.0
-name: Demo Rails 6 app
+name: Test pipeline
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
+
 blocks:
-  - name: Database Migration
-    dependencies: []
-    task:
+  - name: "Run tests"
+    task: 
       jobs:
-        - name: DB Migration job 
-          commands :
-            - echo "Inside DB Migration Job"
-  - name: Setup
-    dependencies: []
-    task:
-      jobs:
-        - name: bundle
+        - name: "Test 1"
           commands:
-            - sem-version ruby 2.7.3
-            - sem-version node 14.16.1
             - checkout
-            - cache restore
-            - bundle install
-            - cache store
-  - name: Code scanning
-    dependencies:
-      - Setup
-    task:
-      jobs:
-        - name: check style + security
-          commands:
-            - sem-version ruby 2.7.3
-            - sem-version node 14.16.1
-            - checkout
-            - cache restore
-            - bundle install
-            - cache store
-            - bundle exec rubocop
-            - bundle exec brakeman
-  - name: Unit tests
-    dependencies:
-      - Code scanning
-    task:
-      prologue:
-        commands:
-          - sem-version ruby 2.7.3
-          - sem-version node 14.16.1
-          - checkout
-          - cache restore
-          - bundle install
-          - cache store
-          - sem-service start postgres
-          - 'bundle exec rake db:setup'
-      jobs:
-        - name: RSpec - model tests
-          commands:
-            - bundle exec rspec spec/models
-        - name: RSpec - controller tests
-          commands:
-            - bundle exec rspec spec/controllers
-  - name: Integration tests
-    dependencies:
-      - Unit tests
-    task:
-      prologue:
-        commands:
-          - sem-version ruby 2.7.3
-          - sem-version node 14.16.1
-          - checkout
-          - cache restore
-          - bundle install
-          - cache store
-      jobs:
-        - name: RSpec - feature specs
-          commands:
-            - sem-service start postgres
-            - 'bundle exec rake db:setup'
-            - bundle exec rspec spec/features
+            - echo "Your commands go here"
+
+promotions:
+  - name: EB deploy
+    pipeline_file: eb-deployment.yml
+    auto_promote_on:
+      - result: passed
