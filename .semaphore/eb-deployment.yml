@@ -13,7 +13,7 @@ blocks:
         - name: AWS_CREDENTIALS
       env_vars:
         - name: S3_BUCKET_NAME
-          value: elasticbeanstalk-us-east-1-673626449192
+          value: semaphore-test-app
         - name: EB_APP_NAME
           value: rtassignment
         - name: EB_ENV_NAME
