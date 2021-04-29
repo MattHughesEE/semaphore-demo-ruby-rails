@@ -10,7 +10,7 @@ blocks:
     task:
       secrets:
         # contains AWS_DEFAULT_REGION, AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
-        - name: aws-credentials
+        - name: AWS_CREDENTIALS
       env_vars:
         - name: S3_BUCKET_NAME
           value: bucket-name
