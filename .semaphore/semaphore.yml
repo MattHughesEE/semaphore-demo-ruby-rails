@@ -73,7 +73,7 @@ blocks:
             - 'bundle exec rake db:setup'
             - bundle exec rspec spec/features
 promotions:
-  - name: EB Deploy
+  - name: EB deploy
     pipeline_file: eb-deployment.yml
     auto_promote_on:
-      - results: passed
+      - result: passed
