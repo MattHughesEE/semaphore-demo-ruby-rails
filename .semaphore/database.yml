@@ -1,0 +1,14 @@
+test:
+  adapter: postgresql
+  database: test
+  pool: 5
+  host: localhost
+  username: postgres
+  password: ~
+production:
+  adapter: postgresql
+  database: test
+  pool: 5
+  host: localhost
+  username: postgres
+  password: ~
