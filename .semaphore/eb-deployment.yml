@@ -15,9 +15,9 @@ blocks:
         - name: S3_BUCKET_NAME
           value: semaphore-test-app
         - name: EB_APP_NAME
-          value: afrin
+          value: testing
         - name: EB_ENV_NAME
-          value: Afrin-env
+          value: Testing-env
 
       jobs:
         - name: "Deployment"
