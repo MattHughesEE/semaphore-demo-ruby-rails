@@ -15,7 +15,7 @@ blocks:
         - name: S3_BUCKET_NAME
           value: semaphore-test-app
         - name: EB_APP_NAME
-          value: pumawrangler
+          value: rtassignment
         - name: EB_ENV_NAME
           value: Pumawrangler-env
 
