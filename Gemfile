@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'webpacker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rake'
 gem 'rails', '~> 6.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
