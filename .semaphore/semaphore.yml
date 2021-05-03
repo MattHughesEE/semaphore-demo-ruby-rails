@@ -72,3 +72,8 @@ blocks:
             - sem-service start postgres
             - 'bundle exec rake db:setup'
             - bundle exec rspec spec/features
+promotions:
+  - name: EB Deploy
+    pipeline_file: eb-deployment.yml
+    auto_promote_on:
+      - results: passed
