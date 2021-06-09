@@ -77,3 +77,5 @@ promotions:
     pipeline_file: eb-deployment.yml
     auto_promote_on:
       - result: passed
+  - name: Database Migration
+    pipeline_file: db-migrate.yml
