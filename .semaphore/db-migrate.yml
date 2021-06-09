@@ -1,5 +1,5 @@
 version: v1.0
-name: EB-Deploy
+name: DB-migrate
 agent:
   machine:
     type: e1-standard-2
