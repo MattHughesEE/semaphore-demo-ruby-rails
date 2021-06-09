@@ -15,9 +15,9 @@ blocks:
         - name: S3_BUCKET_NAME
           value: semaphore-test-app
         - name: EB_APP_NAME
-          value: testing
+          value: bobamigrate
         - name: EB_ENV_NAME
-          value: Testing-env
+          value: rails-env
 
       jobs:
         - name: "Deployment"
