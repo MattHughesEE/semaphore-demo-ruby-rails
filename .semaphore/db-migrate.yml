@@ -1,0 +1,24 @@
+version: v1.0
+name: EB-Deploy
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Database Migration
+    task:
+      secrets:
+        # contains AWS_DEFAULT_REGION, AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+        - name: AWS_CREDENTIALS
+      env_vars:
+        - name: S3_BUCKET_NAME
+          value: semaphore-test-app
+        - name: EB_APP_NAME
+          value: testing
+        - name: EB_ENV_NAME
+          value: Testing-env
+
+      jobs:
+        - name: Migration
+          commands:
+            - bundle exec rake db:migrate
