@@ -17,7 +17,7 @@ RAILS_ENV=production bundle exec rake assets:precompile
 
 zip $file_name -9 -y -r . -x "spec/*" "tmp/*" "vendor/bundle/*" ".git/*"
 
-aws s3 --profile sem-ci-service cp $file_name s3://$S3_PUBLISH_BUCKET/testing/$file_name
+aws s3 cp $file_name s3://$S3_PUBLISH_BUCKET/testing/$file_name
 
 parameters=`aws cloudformation describe-stacks --profile sem-ci-service --stack-name $stack_name | jq -r '.Stacks[].Parameters[].ParameterKey | select( . != "BundleKey")'`
 
@@ -28,4 +28,4 @@ done
 echo "{\"ParameterKey\": \"BundleKey\", \"ParameterValue\": \"testing/$file_name\"}" >> params.json
 echo "]" >> params.json
 
-aws cloudformation update-stack --profile sem-ci-service --stack-name $stack_name --use-previous-template --parameters file://params.json
+aws cloudformation update-stack --stack-name $stack_name --use-previous-template --parameters file://params.json
