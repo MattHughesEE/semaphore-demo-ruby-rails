@@ -13,12 +13,3 @@ sem-service start postgres 10.6
 RAILS_ENV=production bundle exec rake db:create db:structure:load
 SECRET_KEY_BASE=`bin/rake secret` bin/rake assets:precompile
 RAILS_ENV=production bundle exec rake assets:precompile
-
-
-zip $file_name -9 -y -r . -x "spec/*" "tmp/*" "vendor/bundle/*" ".git/*"
-
-aws s3 cp $file_name s3://$S3_PUBLISH_BUCKET/testing/$file_name
-
-parameters=`aws cloudformation describe-stacks --stack-name $stack_name --region us-east-1 | jq -r '.Stacks[].Parameters[].ParameterKey | select( . != "BundleKey")'`
-
-aws cloudformation update-stack --stack-name $stack_name --region us-east-1
