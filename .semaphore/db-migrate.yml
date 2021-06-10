@@ -21,6 +21,6 @@ blocks:
       jobs:
         - name: Migration
           commands:
-            -  sudo su
             - cd /var/app/current
+            - pwd
             - RAILS_ENV=production bundle exec rake db:migrate
