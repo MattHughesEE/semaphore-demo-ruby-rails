@@ -1,0 +1,23 @@
+version: v1.0
+name: EB-Deploy
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Deploy to ElasticBeanstalk
+    task:
+      secrets:
+        - name: AWS_CREDENTIALS
+      env_vars:
+        - name: S3_BUCKET_NAME
+          value: semaphore-test-app
+        - name: EB_APP_NAME
+          value: miami
+        - name: EB_ENV_NAME
+          value: miami-env
+      jobs:
+        - name: Deployment
+          commands:
+            - checkout
+            - ./.semaphore/deploy.sh $SEMAPHORE_GIT_SHA awseb-e-5vgtzbh6h3-stack
