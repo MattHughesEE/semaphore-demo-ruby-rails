@@ -13,6 +13,8 @@ sem-service start postgres 10.6
 RAILS_ENV=production bundle exec rake db:create db:structure:load
 RAILS_ENV=production bundle exec rake assets:precompile
 
+RAILS_ENV=production SECRET_KEY_BASE=production_test_key rails c
+
 zip $file_name -9 -y -r . -x "spec/*" "tmp/*" "vendor/bundle/*" ".git/*"
 
 aws s3 --profile sem-ci-service cp $file_name s3://$S3_PUBLISH_BUCKET/testing/$file_name
