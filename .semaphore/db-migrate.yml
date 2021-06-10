@@ -21,4 +21,6 @@ blocks:
       jobs:
         - name: Migration
           commands:
-            -  echo $SEMAPHORE_GIT_SHA
+            -  sudo su
+            - cd /var/app/current
+            - RAILS_ENV=production bundle exec rake db:migrate
