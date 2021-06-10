@@ -13,11 +13,11 @@ blocks:
         - name: S3_BUCKET_NAME
           value: semaphore-test-app
         - name: EB_APP_NAME
-          value: miami
+          value: testing
         - name: EB_ENV_NAME
-          value: miami-env
+          value: testing-env
       jobs:
         - name: Deployment
           commands:
             - checkout
-            - ./.semaphore/deploy.sh $SEMAPHORE_GIT_SHA awseb-e-5vgtzbh6h3-stack
+            - ./.semaphore/deploy.sh $SEMAPHORE_GIT_SHA awseb-e-gpk6spau2z-stack
