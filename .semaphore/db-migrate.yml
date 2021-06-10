@@ -8,7 +8,6 @@ blocks:
   - name: Database Migration
     task:
       secrets:
-        # contains AWS_DEFAULT_REGION, AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
         - name: AWS_CREDENTIALS
       env_vars:
         - name: S3_BUCKET_NAME
@@ -17,10 +16,9 @@ blocks:
           value: testing
         - name: EB_ENV_NAME
           value: testing-env
-
       jobs:
         - name: Migration
           commands:
             - cd /var/app/current
             - pwd
-            - RAILS_ENV=production bundle exec rake db:migrate
+            - 'RAILS_ENV=production bundle exec rake db:migrate'
