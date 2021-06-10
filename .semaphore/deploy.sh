@@ -21,11 +21,4 @@ aws s3 cp $file_name s3://$S3_PUBLISH_BUCKET/testing/$file_name
 
 parameters=`aws cloudformation describe-stacks --stack-name $stack_name --region us-east-1 | jq -r '.Stacks[].Parameters[].ParameterKey | select( . != "BundleKey")'`
 
-echo "[" > params.json
-for parameter in $parameters; do
-  echo "{\"ParameterKey\": \"$parameter\", \"UsePreviousValue\": true}," >> params.json
-done
-echo "{\"ParameterKey\": \"BundleKey\", \"ParameterValue\": \"testing/$file_name\"}" >> params.json
-echo "]" >> params.json
-
 aws cloudformation update-stack --stack-name $stack_name --region us-east-1 --use-previous-template --parameters file://params.json
