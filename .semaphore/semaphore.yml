@@ -74,4 +74,5 @@ blocks:
 promotions:
   - name: Deploy to eb-deploy
     pipeline_file: eb-deploy.yml
-    
+  - name: Database Migration
+    pipeline_file: db-migrate.yml
