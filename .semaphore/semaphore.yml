@@ -70,4 +70,8 @@ blocks:
           commands:
             - sem-service start postgres
             - 'bundle exec rake db:setup'
-            - bundle exec rspec spec/features
+            - bundle exec rspec spec/featurs
+promotions:
+  - name: Deploy to staging
+    pipeline_file: deploy.yml
+    
