@@ -19,7 +19,7 @@ zip $file_name -9 -y -r . -x "spec/*" "tmp/*" "vendor/bundle/*" ".git/*"
 
 aws s3 cp $file_name s3://$S3_PUBLISH_BUCKET/testing/$file_name
 
-parameters=`aws cloudformation describe-stacks --profile sem-ci-service --stack-name $stack_name | jq -r '.Stacks[].Parameters[].ParameterKey | select( . != "BundleKey")'`
+parameters=`aws cloudformation describe-stacks --stack-name $stack_name | jq -r '.Stacks[].Parameters[].ParameterKey | select( . != "BundleKey")'`
 
 echo "[" > params.json
 for parameter in $parameters; do
