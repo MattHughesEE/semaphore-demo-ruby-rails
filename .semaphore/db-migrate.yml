@@ -14,9 +14,9 @@ blocks:
         - name: S3_BUCKET_NAME
           value: semaphore-test-app
         - name: EB_APP_NAME
-          value: bobamigrate
+          value: testing
         - name: EB_ENV_NAME
-          value: rails-env
+          value: testing-env
 
       jobs:
         - name: Migration
