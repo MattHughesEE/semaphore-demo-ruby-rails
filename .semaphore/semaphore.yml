@@ -11,7 +11,7 @@ blocks:
       jobs:
         - name: bundle
           commands:
-            - sem-version ruby 2.6.7
+            - sem-version ruby 2.7.3
             - sem-version node 14.16.1
             - checkout
             - cache restore
@@ -24,7 +24,7 @@ blocks:
       jobs:
         - name: check style + security
           commands:
-            - sem-version ruby 2.6.7
+            - sem-version ruby 2.7.3
             - sem-version node 14.16.1
             - checkout
             - cache restore
@@ -68,13 +68,6 @@ blocks:
       jobs:
         - name: RSpec - feature specs
           commands:
-            - sem-service start mysql
+            - sem-service start postgres
             - 'bundle exec rake db:setup'
             - bundle exec rspec spec/features
-promotions:
-  - name: EB deploy
-    pipeline_file: eb-deployment.yml
-    auto_promote_on:
-      - result: passed
-  - name: Database Migration
-    pipeline_file: db-migrate.yml
