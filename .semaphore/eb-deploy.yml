@@ -20,4 +20,5 @@ blocks:
         - name: Deployment
           commands:
             - checkout
+            - chmod u+x .semaphore/deploy.sh
             - ./.semaphore/deploy.sh $SEMAPHORE_GIT_SHA awseb-e-gpk6spau2z-stack
