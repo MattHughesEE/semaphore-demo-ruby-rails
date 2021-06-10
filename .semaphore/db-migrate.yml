@@ -21,5 +21,4 @@ blocks:
       jobs:
         - name: Migration
           commands:
-            - cd /var/app/current
-            - bundle exec rake db:migrate
+            -  echo $SEMAPHORE_GIT_SHA
